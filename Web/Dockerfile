@@ -5,14 +5,14 @@ apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl lynx-cur
 
 
 #copy des config des sites 
-COPY /b2B/b2B.conf /etc/apache2/site-available/
-COPY /intranet/intranet.conf /etc/apache2/site-available/
-COPY /showcase/showcase.conf /etc/apache2/site-available/
+COPY b2B/b2B.conf /etc/apache2/site-available/
+COPY intranet/intranet.conf /etc/apache2/site-available/
+COPY showcase/showcase.conf /etc/apache2/site-available/
 
 #copy des sites 
-COPY /b2B/html /var/www/b2b/html
-COPY /intranet/html /var/www/intranet/html
-COPY /showcase/html /var/www/default/html
+COPY b2B/html /var/www/b2b/html
+COPY intranet/html /var/www/intranet/html
+COPY showcase/html /var/www/default/html
 
 
 
@@ -29,5 +29,5 @@ RUN a2ensite showcase.conf
 
 EXPOSE 80 443
 
-CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
+CMD /usr/sbin/apache2ctl -D FOREGROUND
 
